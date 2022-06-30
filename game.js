@@ -29,6 +29,9 @@ function playRound(playerSelection, computerSelection){
 
 function game(){
     for (let i = 0; i < 5; i++) {
-        
+        console.log(`🟦Round ${i}🟦`)
+        let playerSelection = prompt("Enter Rock🤘, Paper🧻 or Scissors ✂")
      }
 }
+
+// game();
