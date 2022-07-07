@@ -1,12 +1,6 @@
-//variables for storing player and computer scores
-
-let ps = 0;
-let cs = 0;
-
-
 //Computer play
 function computerPlay (){
-    const randomArray = Math.floor(Math.random() * 3)
+    const randomArray = Math.floor(Math.random() * results.length)
     const results = ["rock","paper","scissors"];
     return results[randomArray];
 }
@@ -33,6 +27,10 @@ function playRound(playerSelection, computerSelection){
 } 
 //console.log(playRound(playerSelection, computerPlay()));
 
+//variables for storing player and computer scores
+let ps = 0;
+let cs = 0;
+
 function game(){
     for (let i = 1; i < 6; i++) {
         console.log(`🟦Round ${i}🟦`)
@@ -40,30 +38,21 @@ function game(){
         let gameResult = playRound(playerSelection, computerPlay());
         if (gameResult == "player win"){
             console.log ("You WON this round!")
-            playerScore();
+            ps++;
         }else if (gameResult == "player lose rock"){
             console.log ("You LOST this round! Computer chose rock!")
-            computerScore(); 
+            cs++;
         }else if (gameResult == "player lose paper"){
             console.log ("You LOST this round! Computer chose paper!")
-            computerScore();            
+            cs++;           
         }else if (gameResult == "player lose paper"){
             console.log ("You LOST this round! Computer chose scissors!")
-            computerScore();
+            cs++;
         }else if (gameResult == "draw"){
             console.log(`Draw! you both picked`);
         }
      }
      console.log(`🧑Player scored ${ps} | 💻 Computer Scored ${cs}`)
-}
-
-function playerScore(){
-    ps++;
-    return ps;
-}
-function computerScore(){
-    cs++;
-    return cs;
 }
 
 game();
