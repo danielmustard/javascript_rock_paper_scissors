@@ -1,0 +1,35 @@
+:root{
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Games';
+    src: url(./fonts/Games.ttf);
+}
+
+body{
+    background-color: #353935;
+    height: 100vh;
+    align-items: center;
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    
+}
+.centered{
+    font-family: 'Games', sans-serif;
+    font-size: xx-large;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+

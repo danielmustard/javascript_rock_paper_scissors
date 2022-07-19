@@ -55,4 +55,4 @@ function game(){
      console.log(`🧑Player scored ${ps} | 💻 Computer Scored ${cs}`)
 }
 
-game();
+//game();
