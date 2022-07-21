@@ -4,28 +4,33 @@ function computerPlay (){
     const randomArray = Math.floor(Math.random() * results.length)
     return results[randomArray];
 }
-
 function playRound(playerSelection, computerSelection){
     //Player winning sections
     if (playerSelection === "rock" && computerSelection === "scissors"){
+        console.log('player win')
         return  ("player win")
     } else if (playerSelection === "paper" && computerSelection === "rock"){
+        console.log('player win')
         return ("player win")
     }else if (playerSelection === "scissors" && computerSelection === "paper"){
+        console.log('player win')
         return ("player win");
     //Player losing Selections
     }else if (computerSelection === "rock" && playerSelection === "scissors"){
+        console.log('player lose rock')
         return  ("player lose rock")
     }else if (computerSelection === "paper" && playerSelection === "rock"){
+        console.log('player lose paper')
         return ("player lose paper")
     }else if (computerSelection === "scissors" && playerSelection === "paper"){
+        console.log('player lose scissors')
         return ("player lose scissors")
     //Both choosing same outcome    
     }else if (computerSelection === playerSelection){
+        console.log('draw')
         return ("draw")
     }
 } 
-//console.log(playRound(playerSelection, computerPlay()));
 
 //variables for storing player and computer scores
 let ps = 0;
@@ -35,7 +40,9 @@ function game(e){
     // for (let i = 1; i < 6; i++) {
            
         const resultsDiv = document.getElementById('results');
-
+        const score = document.getElementById('score');
+        
+        //This clears the last result from the dom if it is left over.
         if (resultsDiv.innerHTML !== null){
             resultsDiv.innerHTML = "";
         }
@@ -53,30 +60,22 @@ function game(e){
         }else if (gameResult == "player lose paper"){
             resultsDiv.innerHTML += "You LOST this round! Computer chose paper!";
             cs++;           
-        }else if (gameResult == "player lose paper"){
+        }else if (gameResult == "player lose scissors"){
             resultsDiv.innerHTML += "You LOST this round! Computer chose scissors!"
             cs++;
         }else if (gameResult == "draw"){
             resultsDiv.innerHTML += `Draw! you both picked ${playerSelection}`;
         }
         
-     //}
-     console.log(`🧑Player scored ${ps} | 💻 Computer Scored ${cs}`)
+     //
+     score.innerHTML = `🧑 : ${ps} 💻 : ${cs}`;
 }
 
 function userSelection(e){
-
     //the ID's within HTML corrispond with the image
     const userClicked = e.target.id;
-
     console.log(playRound(userClicked, computerPlay()));
 }
-
-//game();
-
-//HTML Elements 
-
-//Add event listener to each image, when element is clicked the item clicked is used to trigger the play round function, when round is started the user selection is passed into the round. 
 
 const images = document.querySelectorAll('img');
 //for each game image we add a click event listener
