@@ -1,7 +1,7 @@
 //Computer play
 function computerPlay (){
-    const randomArray = Math.floor(Math.random() * results.length)
     const results = ["rock","paper","scissors"];
+    const randomArray = Math.floor(Math.random() * results.length)
     return results[randomArray];
 }
 
@@ -31,28 +31,54 @@ function playRound(playerSelection, computerSelection){
 let ps = 0;
 let cs = 0;
 
-function game(){
-    for (let i = 1; i < 6; i++) {
-        console.log(`🟦Round ${i}🟦`)
-        let playerSelection = prompt("Enter Rock🤘, Paper🧻 or Scissors ✂")
+function game(e){
+    // for (let i = 1; i < 6; i++) {
+           
+        const resultsDiv = document.getElementById('results');
+
+        if (resultsDiv.innerHTML !== null){
+            resultsDiv.innerHTML = "";
+        }
+
+        let playerSelection = e.target.id
+
         let gameResult = playRound(playerSelection, computerPlay());
+        
         if (gameResult == "player win"){
-            console.log ("You WON this round!")
+            resultsDiv.innerHTML += 'You Won!'            
             ps++;
         }else if (gameResult == "player lose rock"){
-            console.log ("You LOST this round! Computer chose rock!")
+            resultsDiv.innerHTML += "You LOST this round! Computer chose rock!";
             cs++;
         }else if (gameResult == "player lose paper"){
-            console.log ("You LOST this round! Computer chose paper!")
+            resultsDiv.innerHTML += "You LOST this round! Computer chose paper!";
             cs++;           
         }else if (gameResult == "player lose paper"){
-            console.log ("You LOST this round! Computer chose scissors!")
+            resultsDiv.innerHTML += "You LOST this round! Computer chose scissors!"
             cs++;
         }else if (gameResult == "draw"){
-            console.log(`Draw! you both picked`);
+            resultsDiv.innerHTML += `Draw! you both picked ${playerSelection}`;
         }
-     }
+        
+     //}
      console.log(`🧑Player scored ${ps} | 💻 Computer Scored ${cs}`)
 }
 
+function userSelection(e){
+
+    //the ID's within HTML corrispond with the image
+    const userClicked = e.target.id;
+
+    console.log(playRound(userClicked, computerPlay()));
+}
+
 //game();
+
+//HTML Elements 
+
+//Add event listener to each image, when element is clicked the item clicked is used to trigger the play round function, when round is started the user selection is passed into the round. 
+
+const images = document.querySelectorAll('img');
+//for each game image we add a click event listener
+images.forEach(image => image.addEventListener('click',game));
+

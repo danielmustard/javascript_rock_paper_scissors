@@ -33,3 +33,22 @@ body{
     justify-content: center;
 }
 
+.gameContainer{
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    align-items: center;
+
+}
+
+.gameContainer > img{
+    height: 250px;
+}
+
+.results{
+    font-family: 'Games', sans-serif;
+    font-size: xx-large;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
